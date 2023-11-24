@@ -9,7 +9,7 @@ The Convolutional Neural Network (CNN) serves as a powerful model for medical im
 
 In the Dataset Preparation section below, we introduce the model input. The provided code snippets highlight crucial steps in CNN creation; for the complete code, please download above code files or refer to our published paper.
 
-Our Python version is 3.7 and tensorflow version is 2.4.1.
+Our Python version is 3.7 and tensorflow version is 2.4.1.  
 **For more detailed information, please refer to our published paper:**  
 **https://pubmed.ncbi.nlm.nih.gov/34667236/**  
 **(Sci Rep. 2021 Oct 19;11(1):20691)**
