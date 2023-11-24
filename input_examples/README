@@ -1,11 +1,14 @@
-This directory displays input example files.  
-We randomly selected 12 input files as examples. The file name can be splited and reconigzed as 4 frements.  
-For example, the file BRCA-N5-0-TCGA-BH-A1FE-11B-14R-A13Q-07, we can splite its name into 4 words, such as "BRCA", "N5", "0", and "TCGA-BH-A1FE-11B-14R-A13Q-07".  
-The below description were the means of these 4 terms:  
-1. "BRCA", "COAD", "HNSC"..."THCA" were the abbreviations of 11 cancer types.  
-  
-2. "N5" indicates Normal sample number 5 (N5); if "T5" it means Tumor sample number 5 (T5).  
+This directory displays example input files.  
+We randomly selected 12 input files as examples.  
+The file name can be split and recognized as four fragments.  
+For example, in the file 'BRCA-N5-0-TCGA-BH-A1FE-11B-14R-A13Q-07,' we can split its name into four words: 'BRCA,' 'N5,' '0,' and 'TCGA-BH-A1FE-11B-14R-A13Q-07'.  
 
-3. "0" is the labe of normal sample; and the id numbers of 1 to 11 indicate 11 cancer types.  
+The following descriptions explain the meanings of these four terms:  
 
-4. "TCGA-BH-A1FE-11B-14R-A13Q-07" is a id of TCGA database, it means unique tumor of clinical patient.
+1. 'BRCA,' 'COAD,' 'HNSC,' and so on, are abbreviations for 11 cancer types.  
+
+2. 'N5' indicates Normal sample number 5 (N5); if it is 'T5,' it means Tumor sample number 5 (T5).  
+
+3. The '0' is the label for normal samples, and the ID numbers from 1 to 11 indicate the 11 cancer types.  
+
+4. 'TCGA-BH-A1FE-11B-14R-A13Q-07' is an ID from the TCGA database, representing a unique tumor in a clinical patient.  
