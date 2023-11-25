@@ -44,7 +44,7 @@ In second step, we build CNN model by Sequential() from keras.models.
 model = Sequential()
 # Conv 1: filter 5*5, kernel number=64, input size 100*100
 model.add(Conv2D(filters = 64, kernel_size = (5, 5), input_shape = (100, 100, 1)))
-model.add(B_nor(axis = 2, epsilon = 1e-5)) # layer of batch normalization, normalize value to accelerate learning (accelerate convergence, avoid gradient vanishing/exploding )
+model.add(B_nor(axis = 2, epsilon = 1e-5)) # batch normalization, accelerate convergence, avoid gradient vanishing/exploding
 model.add(MaxPooling2D(pool_size = (2, 2), padding = "same")) # same: padding, "same" size of input
 # Conv 2
 model.add(Conv2D(filters = 64, kernel_size = (3, 3)))
