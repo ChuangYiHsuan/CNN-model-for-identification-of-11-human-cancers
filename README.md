@@ -15,6 +15,6 @@ Our Python version is 3.7 and tensorflow version is 2.4.1.
 **(Sci Rep. 2021 Oct 19;11(1):20691)**
   
   
-### Dataset Preparation [The example files](https://github.com/ChuangYiHsuan/CNN-model-for-identification-of-11-human-cancers/tree/main/input_examples)  
+### Dataset Preparation [(The example files)](https://github.com/ChuangYiHsuan/CNN-model-for-identification-of-11-human-cancers/tree/main/input_examples)  
   
 The human protein-protein interactions (PPIs) were collected, including 16,433 human proteins and 181,868 PPIs. These PPIs were transformed into a Laplacian matrix (i.e., an adjacency and diagonal matrix) to be mapped onto a X-Y axis (black and white 2D image). Subsequently, we gathered numeric Next-Generation Sequencing (NGS) data for 11 cancer types (5,528 tumors and 608 normal tissues). The data values were mapped into images, with colors representing high or low numerical values. These colored images served as inputs for the CNN model to identify distinct cancers.
