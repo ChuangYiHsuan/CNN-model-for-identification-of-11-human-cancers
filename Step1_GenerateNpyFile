@@ -6,20 +6,16 @@ import random
 from datetime import datetime as DT
 import sys
 
-'''
-input gene expression profile
-(Y-label: gene name; X-label: sample id; content: float numeric value)
-'''
+#input gene expression profile
+#(Y-label: gene name; X-label: sample id; content: float numeric value)
 path = sys.argv[1]
 dirs = os.listdir(path)
 
 # npy output name
 output_file_name=sys.argv[2]
 
-'''
-Set random seed to shuffle order of input files
-(avoid CNN model classify samples by file orders)
-'''
+#Set random seed to shuffle order of input files
+#(avoid CNN model classify samples by file orders)
 time = DT.utcnow()
 seed = str(time.year) + str(time.month) + str(time.day) + str(time.hour) + str(time.minute) + str(time.microsecond)
 random.seed(seed)
