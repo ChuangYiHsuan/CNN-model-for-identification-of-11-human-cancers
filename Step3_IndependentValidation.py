@@ -55,7 +55,7 @@ test_label = np_utils.to_categorical(test_label)
 filename_list = sys.argv[3]
 test_sample_title = np.load(filename_list)
 
-input_save_model = sys.argv[4] # the best training model
+input_save_model = sys.argv[4] # the previous training model
 time = DT.now()
 time = str(time.year) + str(time.month) + str(time.day) + str(time.hour) + str(time.minute)
 out=open(os.path.splitext(os.path.basename(testing_set))[0] + "_predicted_result_"+time,"w" )
@@ -84,10 +84,10 @@ model.add(Dense(600, activation = "relu")) # 2nd layer
 model.add(Dense(80, activation = "relu")) # 3rd layer
 model.add(Dense(12, activation = "softmax")) # 12 label classes, 11 cancers + 1 normal type
 
-# load weight from previous training / best performance
+# load weight from previous training performance
 try:
     model.load_weights(input_save_model)
-    print("Successfully loading previous BEST training weights.")
+    print("Successfully loading previous training weights.")
 except:
     print("Failed to load previous data, training new model below.")
 
@@ -99,7 +99,7 @@ model.compile(loss = 'categorical_crossentropy', optimizer = optimizer_Adam, met
 scores = model.evaluate(test_sample, test_label, verbose = 1)
 print("Independent test:\tAccuracy\t%.3f\tMCC\t%.3f\n" %( scores[1] , scores[2]), file=out)
 
-# Use best trained model to do the prediction, and output confusion matrix
+# Use previous trained model to do the prediction, and output confusion matrix
 predict_x = model.predict(test_sample) 
 classes_x = np.argmax(predict_x, axis=1)
 num = 0
