@@ -17,5 +17,5 @@ Our Python version is 3.7 and tensorflow version is 2.4.1.
   
 ### Dataset Preparation  
  
-  
-Please see the example files
+[The example files](https://github.com/ChuangYiHsuan/CNN-model-for-identification-of-11-human-cancers/tree/main/input_examples)  
+
