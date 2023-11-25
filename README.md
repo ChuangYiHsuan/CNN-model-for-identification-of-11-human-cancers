@@ -32,7 +32,33 @@ random.shuffle(dirs)
 # Subsequently, the program generates 3 files:
 # (1) a single file that includes all training images (in our case, totaling 1,228 images),
 # (2) a file recording ground truth labels, and (3) a file recording sample IDs.
-np.save(output_file_name + ".npy", x_samples) # npy file
-np.save(output_file_name + "_label.npy", y_labels) # truth labels of samples
-np.save(output_file_name + "_title.npy", sample_titles) # unique IDs of samples
+np.save(output_file_name + ".npy", x_samples) # a npy file resprent all training images  
+np.save(output_file_name + "_label.npy", y_labels) # truth labels of images
+np.save(output_file_name + "_title.npy", sample_titles) # unique IDs of images
+```
+
+### Step2_Build_CNN_model.py  
+In second step, we build CNN model by Sequential() from keras.models.  
+```python
+# Build CNN model (Keras)
+model = Sequential()
+# Conv 1: filter 5*5, kernel number=64, input size 100*100
+model.add(Conv2D(filters = 64, kernel_size = (5, 5), input_shape = (100, 100, 1)))
+model.add(B_nor(axis = 2, epsilon = 1e-5)) # layer of batch normalization, normalize value to accelerate learning (accelerate convergence, avoid gradient vanishing/exploding )
+model.add(MaxPooling2D(pool_size = (2, 2), padding = "same")) # same: padding, "same" size of input
+# Conv 2
+model.add(Conv2D(filters = 64, kernel_size = (3, 3)))
+model.add(B_nor(axis = 2, epsilon = 1e-5))
+model.add(MaxPooling2D(pool_size = (2, 2), padding = "same"))
+# Conv 3
+model.add(Conv2D(filters = 64, kernel_size = (3, 3)))
+model.add(B_nor(axis = 2, epsilon = 1e-5))
+model.add(MaxPooling2D(pool_size = (2, 2), padding = "same"))
+# Fully connect
+model.add(Flatten())
+# Hidden layers, three layers with 1000, 600 and 80 neuron nodes
+model.add(Dense(1000, activation = "relu"))
+model.add(Dense(600, activation = "relu"))
+model.add(Dense(80, activation = "relu"))
+model.add(Dense(12, activation = "softmax")) # 12 label classes, 11 cancers + 1 normal type
 ```
