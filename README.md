@@ -22,5 +22,13 @@ The human protein-protein interactions (PPIs) were collected, including 16,433 h
 ### Step1_GenerateNpyFile.py  
 In the first step, our aim is to read files (which can be considered as colored images) containing gene expression values within a 100x100-sized matrix of each sample. Subsequently, we generate *.npy files to serve as inputs for the CNN model.  
 ```python
-
+# We shuffle the order of image files to prevent the CNN model from classifying samples based on file order.
+seed = str(time.year) + str(time.month) + str(time.day) + str(time.hour) + str(time.minute) + str(time.microsecond)
+random.seed(seed)
+random.shuffle(dirs)
+...
+#Subsequently, the program generates 3 files: (1) a single file that includes all training images (in our case, totaling 1,228 images), (2) a file recording ground truth labels, and (3) a file recording sample IDs.
+np.save(output_file_name + ".npy", x_samples) # npy file
+np.save(output_file_name + "_label.npy", y_labels) # truth labels of samples
+np.save(output_file_name + "_title.npy", sample_titles) # unique IDs of samples
 ```
