@@ -78,3 +78,19 @@ def MCC(y_true, y_pred):
 
     return numerator / (denominator + K.epsilon())
 ```
+### Step3_IndependentValidation.py  
+In this step, we load a previously trained model and assess its performance using independent testing sets for validation.
+```python
+# load weight from previous training
+try:
+    model.load_weights(input_save_model)
+    print("Successfully loading previous training weights.")
+except:
+    print("Failed to load previous data, training new model below.")
+...
+predict_x = model.predict(test_sample) 
+classes_x = np.argmax(predict_x, axis=1)
+...
+# display confusion matrix
+confusion_matrix = pd.crosstab(test_label_compare, classes_x, rownames=['Actual'], colnames=['Predicted'], margins=True)
+```
