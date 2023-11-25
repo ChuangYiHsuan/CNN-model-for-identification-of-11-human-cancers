@@ -28,9 +28,7 @@ seed = str(time.year) + str(time.month) + str(time.day) +
 str(time.hour) + str(time.minute) + str(time.microsecond)
 random.seed(seed)
 random.shuffle(dirs)
-.
-.
-.
+...
 # Subsequently, the program generates 3 files:
 # (1) a single file that includes all training images (in our case, totaling 1,228 images),
 # (2) a file recording ground truth labels, and (3) a file recording sample IDs.
