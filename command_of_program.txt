@@ -12,5 +12,60 @@ tensorflow version: 2.4.1
 -------------------------------------------------
 
 ************************************************************************
-Step-1. 1_ShuffleFileOrder_and_GenerateNpyFile.py
+Step1_GenerateNpyFile.py
 ************************************************************************
+Purpose:
+This program is used to generate the 2D images (i.e., .npy file) by PPI network and NGS value.
+(If the images (.npy file) have already prepared, the user can ignore this step.)
+
+Example Usage (Linux):
+$ python3.7 Step1_GenerateNpyFile.py ./training_samples/ ./output/Example_training_1228_TCGA_samples
+$ python3.7 Step1_GenerateNpyFile.py ./validation_samples/ ./output/Example_validation_4908_TCGA_samples
+
+Input:
+argv[1]. Please input the directory path of training and validation samples
+Example: "./training_samples/" (AND "./validation_samples/" if user has validation set)
+
+argv[2]. The output name for .npy output file
+Example: "./output/Example_training_1228_TCGA_samples" (AND "./output/Example_validation_4908_TCGA_samples" for validation set)
+
+************************************************************************
+Step2_Build_CNN_model.py
+************************************************************************
+Purpose:
+This program is used to construct CNN model with training set
+
+Example Usage (Linux):
+$ python3.7 Step2_Build_CNN_model.py ./output/Example_training_1228_TCGA_samples.npy ./output/Example_training_1228_TCGA_samples_label.npy ./output/Example_training_1228_TCGA_samples
+
+Input:
+argv[1]. Please input the training .npy file
+Example: "./output/Example_training_1228_TCGA_samples.npy"
+
+argv[2]. Please input the labels of training samples (*_label.npy)
+Example: "./output/Example_training_1228_TCGA_samples_label.npy"
+
+argv[3]. The output name for CNN model
+Example: "./output/Example_training_1228_TCGA_samples"
+
+************************************************************************
+Step3_IndependentValidation.py
+************************************************************************
+Purpose:
+This program is used to test the model accuracy by using validation set, and generate confusion matrix
+
+Example Usage (Linux):
+$ python3.7 Step3_IndependentValidation.py ./output/Example_validation_4908_TCGA_samples.npy ./output/Example_validation_4908_TCGA_samples_label.npy ./output/Example_validation_4908_TCGA_samples_title.npy ./program_2/output/Example_training_1228_TCGA_samples.save
+
+Input:
+argv[1]. Please input the validation images (.npy file)
+Example: "./output/Example_validation_4908_TCGA_samples.npy"
+
+argv[2]. Please input the labels of validation samples (*_label.npy)
+Example: "./output/Example_validation_4908_TCGA_samples_label.npy"
+
+argv[3]. Please input the titles of validation samples (*_title.npy)
+Example: "./output/Example_validation_4908_TCGA_samples_title.npy"
+
+argv[4]. Please input the name of previous training model
+Example: "./output/Example_training_1228_TCGA_samples.save"
