@@ -65,7 +65,7 @@ y_label = np_utils.to_categorical(y_label)
 out_file_name=sys.argv[3]
 num_epochs=100
 
-#Build CNN model (Keras)
+# Build CNN model (Keras)
 model = Sequential()
 # Conv 1: frame 5*5, kernel number=64, input size 100*100
 model.add(Conv2D(filters = 64, kernel_size = (5, 5), input_shape = (100, 100, 1)))
@@ -79,25 +79,23 @@ model.add(MaxPooling2D(pool_size = (2, 2), padding = "same"))
 model.add(Conv2D(filters = 64, kernel_size = (3, 3)))
 model.add(B_nor(axis = 2, epsilon = 1e-5))
 model.add(MaxPooling2D(pool_size = (2, 2), padding = "same"))
-
 # Fully connect
 model.add(Flatten())
-
 # Hidden layers
 model.add(Dense(1000, activation = "relu")) # 1st Hidden layer, 1000 neuron nodes, ReLU (Rectified Linear Unit)
 model.add(Dense(600, activation = "relu")) # 2nd layer
 model.add(Dense(80, activation = "relu")) # 3rd layer
 model.add(Dense(12, activation = "softmax")) # 12 label classes, 11 cancers + 1 normal type
 
-#Executing model with training npy file
+# Executing model with training npy file
 optimizer_Adam = Adam(lr = 1e-4) # learning rate
-#Executing = model.compile()
-#loss function = categorical_crossentropy (multiple classification, use for one-hot encoding, 12 unique types)
-#optimizer = Adam
-#performance = MCC
+# Executing = model.compile()
+# loss function = categorical_crossentropy (multiple classification, use for one-hot encoding, 12 unique types)
+# optimizer = Adam
+# performance = MCC
 model.compile(loss = 'categorical_crossentropy', optimizer = optimizer_Adam, metrics = ['accuracy', MCC]) # metrics = ['accuracy', MCC], automaitcally call ACC, MCC function
 
-#Start training *
+# Start training *
 # this step return "training history"
 train_history = model.fit(x_sample, y_label, # training sample and label
                                               validation_split = 0.25, # 25% sample for cross-validation
